@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+h4{
+    margin: 0px;
+    padding: 0px;
+    
+  }
+  .float-right{
+    float: right;
+  }
+  .display-block{
+    display: block;
+
+  }
+  .display-inline{
+    display: inline;
+
+  }
+  .bold-text{
+    font-weight: bold;
+  }
+ *:not(.fas){
+      font-family: sans-serif;
+      color: #424141e3;
+  }
+.margin-bottom{
+  margin-bottom: 5px;
+}
+.margin-top{
+  margin-top: 5px;
+}

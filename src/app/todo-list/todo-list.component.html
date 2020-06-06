@@ -1,0 +1,68 @@
+<div class="todo-body">
+
+  <div *ngFor="let task of tasks">
+    <div class="todo-item" (click)="stateChange(task._id)">
+      <h4 class="display-inline" [id]="task._id">{{task.description}}</h4>
+      <a href="#" class="float-right edit"><i class="fas fa-ellipsis-v"></i></a>
+      <div class="margin-bottom margin-top">
+        <span >{{task.state}}</span>
+        <span class="float-right">{{task.due_date}}</span>
+      </div>
+
+      <span>Priority: {{task.priority}}</span>
+      <span class="float-right lab">{{task.label}}</span>
+    </div>
+
+  </div>
+
+
+
+  <div class="bold-text new-card todo-item" *ngIf="add_new" (click)="showNewTaskForm()">
+    Add new card...
+  </div>
+  <div *ngIf="task_form_toggle" class="form">
+
+    <form (ngSubmit)="newTaskSubmit()" ngNativeValidate>
+      <div class="form-item">
+        <label for="task">Task name: </label>
+        <input id="task" type="text" [(ngModel)]="new_task.description" name="task" minlength="3" maxlength="50"
+          required>
+
+        <br>
+      </div>
+      <div class="form-item">
+        <label for="due_date" id="datepicker">Due date: </label>
+        <input type="text" id="due_date" [(ngModel)]="new_task.due_date" name="due_date" required>
+      </div>
+      <div class="form-item">
+        <label for="priority"> Priority: </label>
+        <select id="priority" [(ngModel)]=new_task.priority name="priority">
+          <option value="Low">Low</option>
+          <option value="Medium" selected>Medium</option>
+          <option Value="High">High</option>
+        </select>
+
+      </div>
+      <!--<input type="text" id="label1" [(ngModel)]="new_task.label" name="label1" >-->
+      <div class="form-item">
+        <label for="label1"> Label: </label>
+        <select id="label1" [(ngModel)]="new_task.label" name="label">
+          <option value="Personal">Personal</option>
+          <option value="Work" selected>Work</option>
+          <option Value="Shopping">Shopping</option>
+          <option value="Others">Others</option>
+        </select>
+      </div>
+      <div class="btn">
+        <input type="button" (click)="showNewTaskForm()" class="cancel-btn" value="Cancel">
+
+        <input type="submit" class="submit-btn">
+      </div>
+    </form>
+  </div>
+
+
+
+
+
+</div>

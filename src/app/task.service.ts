@@ -1,5 +1,5 @@
 import { Injectable, ɵConsole } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Task} from './task';
 import { Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -24,7 +24,15 @@ export class TaskService {
     return this.http.patch<Task>(this._url+obj._id,obj);
 
   }
-  deleteTask(obj:Task):Observable<Task>{
-    return this.http.delete<Task>(this._url+obj._id);
+  deleteTask(id):Observable<any>{
+    const requestOptions: Object = {
+      headers: new HttpHeaders(),
+      responseType: 'text',
+      observe:"response"
+    }
+  
+
+    return this.http.delete<any>(this._url+id,requestOptions);
   }
 }
+//observe:"response",

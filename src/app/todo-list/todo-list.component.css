@@ -29,16 +29,45 @@
     transition: background-color 0.1s;
    }
    .todo-item:hover{
-    background-color: rgba(31, 88, 243, 0.377);
+    background-color: rgba(115, 149, 241, 0.404);
     box-shadow: 0 0 10px  rgb(189, 188, 188);
     cursor: pointer;
     transition: background-color 0.1s;
     
    }
-   .edit{
+   .menu{
     color: rgba(128, 128, 128, 0.747);
     font-size: small;
+    border:none;
+    text-decoration: none;
+    
+    background-color: inherit;
+    display:inline-block;
   }
+  .dropdown:hover .dropdown-content{
+    display: block;
+
+  }
+  .dropdown-content{
+    display:none;
+    position: relative;
+    background-color: white;
+    
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border:1px solid black;
+    border-radius: 5px;
+    float:right!important;
+  }
+  .dropdown-content a{
+    display:block;
+    padding:5px;
+    text-decoration: none;
+  }
+  .dropdown-content a:hover{
+    background-color: #B7D6EC;
+  }
+  
    .todo-item:active{
     background-color: rgba(31, 88, 243, 0.479);
     box-shadow: 0 0 10px  rgb(189, 188, 188);

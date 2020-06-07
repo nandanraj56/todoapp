@@ -51,6 +51,7 @@ export class TodoListComponent implements OnInit {
     this.new_task.priority="Low";
   });
   };
+  //Showing New Task creation form
   showNewTaskForm() : void{
     if(this.task_form_toggle==false){
       this.task_form_toggle = true;
@@ -61,7 +62,7 @@ export class TodoListComponent implements OnInit {
       this.add_new= true;
     }
   }
-
+//Onclick card Task state change
   stateChange(id) :void {
    let task=this.tasks.find((task)=>{return task._id==id});
    let task_copy= JSON.parse(JSON.stringify(task));
@@ -70,17 +71,23 @@ export class TodoListComponent implements OnInit {
    else if(task_copy.state=="In Progress")
    task_copy.state="Complete";
    else if(task_copy.state=="Complete"){
-    task_copy.state="New";
-    //alert("Complete->new");   
+    task_copy.state="New";  
    }
-   
-
    this._taskService.updateTask(task_copy).subscribe((result)=>{
      task.state=result.state;
-     //console.log(task);
-     //console.log(result);
     });
   }
-  
+  deleteTask(id):void{
+    //alert("went");
+    this._taskService.deleteTask(id).subscribe((data)=>{
+      console.log(data);
+      this.tasks.splice(this.tasks.findIndex((task)=>{return task._id==id}),1);
+
+    });
+  }
+
+  editTask():void{
+    
+  }
 
 }
